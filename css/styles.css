@@ -102,6 +102,19 @@ body {
                 width: 200px;
             }
         }
+        menu {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            a:is(:link, :visited){
+                color: brown;
+                background-color: blanchedalmond;
+                display: flex;
+                gap: 1rem; 
+                justify-content: center;
+                align-items: center;
+            }
+        }
     }
 }
 /* - - - - - - - - - - - - - */
