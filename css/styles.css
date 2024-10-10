@@ -189,7 +189,7 @@ body {
             } 
             
             section {
-                width: 350px;
+                width: auto;
                 background-color: rgba(48, 48, 45, 0.845);
                 border-radius: 4px;
                 padding: 1rem;
