@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+* {
+    transition: all 0.2s ease-in;
+  }
+  body {
+    background: url(images/castillo.jpg);
+    background-attachment: fixed;
+    font-family: sans-serif;
+  }
+ header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+   
+    
+ }
+  main {
+    background-color: #130f0f;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 850px;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+  
+  div.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: auto; 
+    width: 100%; 
+}
+
+div.logo img {
+    max-width: 100%;
+    height: auto;
+    padding: 1px;
+}
+  
+  main div {
+    background: #0009;
+    height: 200px;
+    width: 200px;
+    position: relative;
+    
+  }
+  
+  main div img {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+
+  }
+  main div h3{
+   
+    background-color: #ffffff88;
+    margin: 0;
+    text-align: center;
+    font-family: Verdana;
+    font-size: 1rem;
+    padding: 20px 10px;
+    position: absolute;
+    width: 180px;
+    bottom: 0px;
+    height: 20px;
+    
+  }
+  main div h3:hover{
+    height: 10px;
+    
+
+  }
+  article {
+    background-color: #ccc;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 850px;
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: justify;
+  }
+ 
+
+  article img{
+    object-fit: cover;
+    width: 200px;
+  }
+  
+  @media (max-width: 920px) {
+    main {
+      width: 500px;
+    }
+    article {
+      width: 500px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    main {
+      width: 400px;
+    }
+    article {
+      flex-direction: column;
+      width: 400px;
+    }
+    article div.txt {
+        overflow-y:scroll ;
+        height: 280px;
+    }
+  }
+</style>
+<body>
+    <header>
+        <div class="logo">
+        <img src="images/logo2kj.png" alt="">
+    </div>
+    </header>
+    <main>
+        <div><img src="images/tanjiro.jpg"alt="">
+            <h3>TANJIRO KAMADO</h3>
+            </div>
+        <div>
+          <img src="images/tomioka2.jpg" alt="">
+          <h3>GIYU TOMIOKA</h3>
+        </div>
+        <div>
+          <img src="images/akaza.jpg" alt="">
+          <h3>AKAZA</h3>
+        </div>
+        <div>
+          <img src="images/kokushibo.png" alt="">
+          <h3>KOKUSHIBO</h3>
+        </div>
+      </main>
+      <article>
+        <div class="img">
+          <img src="images/tanjiro2.jpg" alt="">
+        </div>
+        <div class="txt">
+          <h2>TANJIRO KAMADO</h2>
+          <p>Tanjiro Kamado es el protagonista del popular anime y manga "Demon Slayer: Kimetsu no Yaiba". Desde el inicio de la historia, Tanjiro se presenta como un joven bondadoso y trabajador, criado en una familia que vive en las montañas. Su vida cambia drásticamente cuando su familia es atacada por demonios, y solo su hermana Nezuko sobrevive, aunque transformada en un demonio.
+
+            A lo largo de la serie, Tanjiro se destaca por su fuerte sentido de justicia y su compasión, incluso hacia los demonios, lo que lo distingue de muchos otros cazadores. Es un hábil espadachín y, gracias a su entrenamiento en la técnica del "Respiración del Agua", se convierte en un formidable guerrero. Su dedicación a proteger a su hermana y a los demás lo impulsa en su viaje, y su deseo de encontrar una cura para Nezuko se convierte en su principal motivación.</p>
+          <p>Tanjiro también es conocido por su inquebrantable determinación Tanjiro es un héroe inspirador cuya empatía y valentía resuenan en el corazón de los espectadores.</p>
+        </div>
+        
+      </article>
+      <article>
+        <div class="img">
+          <img src="images/Giyuu_anime_design.jpg" alt="">
+        </div>
+        <div class="txt">
+          <h2>GIYU TOMIOKA</h2>
+          <p>Giyu Tomioka es un personaje destacado en "Demon Slayer: Kimetsu no Yaiba", conocido por su papel como el Pilar del Agua (Hashira de Agua). Desde su primera aparición, Giyu se presenta como un guerrero serio y enigmático, con una fuerte ética de trabajo y un compromiso inquebrantable con su deber de cazar demonios. Su personalidad es a menudo fría y distante, pero en el fondo es un hombre de gran integridad y compasión.
+
+            Físicamente, Giyu tiene una apariencia distintiva, con su cabello negro azulado y una mirada intensa que refleja su experiencia en la batalla. Suele vestir un uniforme de cazador de demonios, que incluye un haori con un diseño único que simboliza su estatus como Pilar. Aunque puede parecer distante, Giyu es profundamente leal a sus amigos y a los que han caído en la lucha contra los demonios.</p>
+          <p>Una de las características más notables de Giyu es su habilidad excepcional en el combate. Su dominio de la "Respiración del Agua" le peSin embargo, su verdadera fuerza radica no solo en su destreza como luchador, sino también en su comprensión del dolor y el sufrimiento de los demás. Giyu es testigo</p>
+        </div>
+        
+      </article>
+      <article>
+        <div class="img">
+          <img src="images/akaza2.png" alt="">
+        </div>
+        <div class="txt">
+          <h2>AKAZA</h2>
+            <p>Akaza es uno de los antagonistas más intrigantes y complejos de "Demon Slayer: Kimetsu no Yaiba", conocido por ser uno de los Doce Kizuki, la élite de los demonios. Como demonio de rango superior, Akaza posee una fuerza y habilidades de combate excepcionales, que lo convierten en un formidable oponente para los cazadores de demonios. Su apariencia es impactante, con un físico musculoso y distintivos tatuajes que adornan su piel, lo que le da un aire intimidante y feroz.
+
+                Una de las características más destacadas de Akaza es su personalidad. A menudo se le ve como un ser frío y despiadado en la batalla, disfrutando de la lucha y el desafío que representan sus enemigos. Sin embargo, detrás de su fachada feroz se esconde una profunda tristeza y un conflicto interno. Antes de convertirse en demonio, Akaza era un humano llamado Hakuji, que sufrió una vida llena de dolor y pérdida. Esta experiencia lo llevó a anhelar la fuerza y la inmortalidad, lo que lo impulsó a aceptar la transformación en demonio.</p>
+        </div>
+        
+      </article>
+      <article>
+        <div class="img">
+          <img src="images/kokushibo2.png" alt="">
+        </div>
+        <div class="txt">
+          <h2>KOKUSHIBO</h2>
+          <p>Kokushibo es uno de los antagonistas más enigmáticos y poderosos de "Demon Slayer: Kimetsu no Yaiba", reconocido como uno de los Doce Kizuki de rango superior. Su verdadero nombre es Michikatsu Tsugikuni, y fue un cazador de demonios antes de convertirse en demonio. Esta transición no solo le otorgó habilidades extraordinarias, sino que también le dejó con un profundo resentimiento y conflictos internos, lo que lo convierte en un personaje complejo y trágico.
+
+            Físicamente, Kokushibo es impresionante y aterrador, con una apariencia que refleja su naturaleza demoníaca. Tiene un cabello largo y oscuro, así como un par de ojos que cambian de forma, destacando su conexión con los demonios. Su atuendo incluye un haori adornado con patrones que evocan la estética de su pasado como cazador de demonios, lo que subraya su historia y su conexión con la lucha contra la oscuridad.
+            
+            Kokushibo es un maestro en la "Respiración de la Luna", una técnica de combate que combina habilidades impresionantes con un estilo elegante y fluido. Su poder es tal que se convierte en un adversario temido incluso por los más fuertes cazadores de demonios.</p>
+        </div>
+        
+      </article>
+</body>
+</html>
