@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+    </style>
+</head>
+    <body class="bg-black font-[Poppins]">
+        <main class="min-h-[100dvh]
+                flex 
+            flex-col
+            justify-center 
+            items-center">
+            <section id="welcome" class="welcome
+                 
+                bg-[url(images/yourdesing.png)]
+                    w-[386px] 
+                    h-[720px]
+                    my-4
+                    rounded-[20px]
+                    overflow-hidden
+                    absolute
+                    bg-top
+                    bg-contain">
+                <div class="absolute
+                    rounded-t-[30px]
+                    bottom-0
+                    w-full
+                    h-[355px]
+                bg-[#284B30]"> 
+                <figure class="logo
+                                h-[112px]
+                                w-[115px]
+                                mx-auto
+                                mt-[-50px]
+                                bg-[url(images/vaso.png)]">
+                    </figure>
+                    <h2 class="text-center
+                               text-[32px]
+                               font-[500]
+                               mt-[38px]
+                             text-[#000]">Welcome to</h2>
+                    <h2 class="text-center
+                               text-[32px]
+                               mt-[-10px]
+                               font-[600]
+                             text-[#000000]">Your Desing Here</h2>
+                    
+                    <div class="actions
+                    w-[320px]
+                    flex
+                    mt-[42px]
+                    mx-auto">
+            <a href="#signin" class="relative w-[180px]
+                              h-[55px]
+                              flex
+                              justify-center
+                              items-center
+                            text-white
+                              rounded-s-[80px]
+                            bg-[#000000]">Sign In</a>
+            <a href="#signup" class="absolute w-[180px]
+                              h-[55px]
+                              mx-36
+                              flex
+                              justify-center
+                              items-center
+                            text-[#000000]
+                              rounded-[80px]
+                            bg-[#fff]">Sign Up</a>
+                </div>
+            </div>
+            </section>
+             <!-- Screen 02 - Signin -->
+        <section id="signin" class="signin 
+                w-[386px] 
+                h-[720px]
+                transition-all
+                ease-in
+                duration-500
+                translate-x-[-300%]
+                target:translate-x-[0px]
+                my-4
+                rounded-[20px]
+                overflow-hidden
+            bg-[white]
+                bg-[url(images/top.png)]
+                absolute
+                bg-top
+                bg-no-repeat">
+        <figure class="logo
+                h-[114px]
+                mx-auto
+                w-[91px]
+                mt-[18px]
+                bg-[url(images/top-logo.svg)]">
+        </figure>
+            <a href="#welcome"  class="absolute 
+                    left-[20px]
+                    hover:translate-x-[-6px]
+                    transition-all
+                    top-[20px]">
+            <img src="images/back.png" alt="Back Welcome">
+            </a>
+        <h2 class="text-[32px]
+            mt-[4rem]
+            text-center
+            text-[#444]
+            font-[500]">Sign In</h2>
+            <h3 class="text-[16px]
+            text-center
+            text-[#888]
+            font-[400]">Enter your account to login</h3>
+
+        <a action="#welcome" class="mt-10
+            flex 
+            justify-center
+            items-center
+            flex-col 
+            gap-2">
+        <label class="flex 
+            gap-1 
+            text-[#444]
+            text-[16px]
+            font-[500]
+            w-[320px]
+            items-center">
+        <img src="images/person.png" alt="Email">
+            Email:
+        </label>
+        
+        <input class="
+            border-[#444]
+            text-[#888]
+            w-[320px]
+            outline-none
+            indent-4
+            h-[55px]
+            rounded-[25px]" type="text" placeholder="elpepe@gmail.com" required>
+            <hr class="border t-2
+            border-[#888]
+            w-80">
+            
+        <label class="flex 
+            gap-1 
+            text-[#444]
+            text-[16px]
+            font-[500]
+            w-[320px]
+            items-center">
+        <img src="images/lock.png" alt="Password">
+        Password:
+        </label>
+        <input class="
+            border-[#444]
+            text-[#888]
+            w-[320px]
+            outline-none
+            indent-4
+            h-[55px]
+            rounded-[25px]" type="password" placeholder="*********** " required>
+            <hr class="border t-2
+            border-[#888]
+            w-80
+            mt-0">
+            <button class="w-[320px]
+            mt-[10px]
+            cursor-pointer
+            transition-all
+            hover:scale-[1.05]
+            text-white
+            rounded-[25px]
+            text-[16px]
+            font-[500]
+            h-[55px]
+            bg-[#000000]">
+            Sign In
+    </button>
+</form>
+<!-- Screen 03 - Signup -->
+<section id="signup" class="signup 
+        w-[386px] 
+        h-[720px]
+        transition-all
+        ease-in
+        duration-500
+        translate-x-[-300%]
+        target:translate-x-[0px]
+        my-4
+        rounded-[20px]
+        overflow-hidden
+        bg-[white]
+        bg-[url(images/top.png)]
+        absolute
+        bg-top
+        bg-no-repeat">
+<figure class="logo
+h-[114px]
+mx-auto
+w-[91px]
+mt-[18px]
+bg-[url(images/top-logo.svg)]">
+</figure>
+<a href="#welcome"  class="absolute 
+    left-[20px]
+    hover:translate-x-[-6px]
+    transition-all
+    top-[20px]">
+<img src="images/back.png" alt="Back Welcome">
+</a>
+<h2 class="text-[32px]
+mt-[4rem]
+text-center
+text-[#444]
+font-[500]">Sign In</h2>
+<h3 class="text-[16px]
+text-center
+text-[#888]
+font-[400]">Enter your account to login</h3>
+
+<a action="#welcome" class="mt-10
+flex 
+justify-center
+items-center
+flex-col 
+gap-2">
+<label class="flex 
+gap-1 
+text-[#444]
+text-[16px]
+font-[500]
+w-[320px]
+items-center">
+<img src="images/person.png" alt="Email">
+Email:
+</label>
+
+<input class="
+border-[#444]
+text-[#888]
+w-[320px]
+outline-none
+indent-4
+h-[55px]
+rounded-[25px]" type="text" placeholder="elpepe@gmail.com" required>
+<hr class="border t-2
+border-[#888]
+w-80">
+
+<label class="flex 
+gap-1 
+text-[#444]
+text-[16px]
+font-[500]
+w-[320px]
+items-center">
+<img src="images/lock.png" alt="Password">
+Password:
+</label>
+<input class="
+border-[#444]
+text-[#888]
+w-[320px]
+outline-none
+indent-4
+h-[55px]
+rounded-[25px]" type="password" placeholder="*********** " required>
+<hr class="border t-2
+border-[#888]
+w-80
+mt-0">
+<button class="w-[320px]
+mt-[10px]
+cursor-pointer
+transition-all
+hover:scale-[1.05]
+text-white
+rounded-[25px]
+text-[16px]
+font-[500]
+h-[55px]
+bg-[#000000]">
+Sign In
+</button>
+</form>
+                
+        </main>
+        <script src="js/tailwind.js"></script>
+    </body>
+</html>
