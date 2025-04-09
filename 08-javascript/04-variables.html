@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>04-variables</title>
+    <title>04-data types</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="../css/styles.css">
 </head>
@@ -14,12 +14,58 @@
                 </a>
         <main>
             <header>
-                <h1>04-variables</h1>
+                <h1>04-data types</h1>
                 <h2> Store and manage data using variables.</h2>
             </header>
             <section>
-                
+                <h3>type string: <small class="type-string"></small></h3>
+                <h3>type number: <small class="type-number"></small></h3>
+                <h3>type boolean: <small class="type-boolean"></small></h3>
+                <h3>type null: <small class="type-null"></small></h3>
+                <h3>type undefined: <small class="type-undefined"></small></h3>
+                <h3>type array: <small class="type-array"></small></h3>
+                <h3>type objet: <small class="type-objet"></small></h3>
             </section>
         </main>
+        <script>
+            // type string
+            const typeString = document.querySelector('.type-string')
+            const string = 'Hello JS'
+            typeString.textContent = `${string} | Length: ${string.length}`
+
+            // type number
+            const typeNumber = document.querySelector('.type-number')
+            const num1 = 6.7
+            const num2 = '5'
+            typeNumber.textContent = `6.7 + 5 = ${num1 + parseInt(num2)}`
+
+            // type boolean
+            const typeBoolean = document.querySelector('.type-boolean')
+            typeBoolean.textContent = `256>512 = ${256>512}`
+
+            // type null
+            const typeNull = document.querySelector('.type-null')
+            const isCreated = null
+            typeNull.textContent = `isCreated = ${isCreated}`
+
+            // type undefined
+            const typeUndefined = document.querySelector('.type-undefined')
+            const isBinary = undefined
+            typeUndefined.textContent = `isBinary = ${isBinary}`
+
+            // type array
+            const typeArray = document.querySelector('.type-array')
+            const landscapes = ['🏜️','🏝️','🏟️','🏙️','🏞️','🛣️']
+            typeArray.textContent = `Landscapes = ${landscapes}`
+
+            //type objets
+            const typeObjet = document.querySelector('.type-objet')
+            const hashira = {
+                name: 'Kyojuro Rengoku',
+                type: 'Fire',
+                age: 24
+            }
+            typeObjet.textContent = `Name = ${hashira.name}`
+</script>
     </body>
 </html>
