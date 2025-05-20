@@ -76,11 +76,15 @@
                         text: 'Operators Logical'
                     },
                     {
-                        url: '14-conditionals.html', 
+                        url: '14-pop-up-windows.html', 
+                        text: 'Pop-Up Windows'
+                    },
+                    {
+                        url: '15-conditionals.html', 
                         text: 'Conditionals'
                     },
                     {
-                        url: '15-challenge-conditionals.html', 
+                        url: '16-challenge-conditionals.html', 
                         text: 'Challenge Conditionals'
                     },
                     {
@@ -131,22 +135,18 @@
                         url: '27-challenge-events-time.html', 
                         text: 'Challente Events Time'
                     },
-                    {
-                        url: '28-pop-up-windows.html', 
-                        text: 'Pop-Up Windows'
-                    }
                 ] 
          
                 links.forEach(renderLink)
-         
+                
                 function renderLink(item, index) {
                     number = index < 9 ? '0'+(index+1) : index+1
                     menu.innerHTML += "<a href='"+item.url+"'><span>"+number+"</span> "+item.text+"</a>"
                 }
-         
-            </script>
+                
+                </script>
             </menu>
-    
+            
     
         </main>
     </body>
