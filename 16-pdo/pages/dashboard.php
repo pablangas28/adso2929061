@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu mejor amigo en casa - Dashboard</title>
-    <link rel="stylesheet" href="<?=$css?>master.css">
+    <link rel="stylesheet" href="<?=$css?>stylee.css">
 </head>
 <body>
     <main class="dashboard">
@@ -28,7 +28,9 @@
                         <img src="../uploads/<?=$pet['photo']?>" alt="">
                     </figure>
                     <div class="info">
-                        <h3><?=$pet['name']?></h3>
+                        <h3>
+                            <?=$pet['name'];?>
+                        </h3>
                         <h4>
                             <?=$pet['specie']?>
                             <?=$pet['breed']?>

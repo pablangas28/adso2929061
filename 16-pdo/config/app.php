@@ -8,7 +8,7 @@
     $public = $url . 'public/';
     $css    = $public . 'css/';
     $js     =  $public . 'js/';
-    $iamges =  $public . 'imgs/';
+    $images =  $public . 'imgs/';
  
     // Date Base Config
     $host = 'localhost';

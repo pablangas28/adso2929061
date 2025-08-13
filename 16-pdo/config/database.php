@@ -41,7 +41,7 @@
     function listPets($conx) {
         try {
             $sql = "SELECT p.id AS id,
-                            p.name AS id,
+                            p.name AS name,
                             p.photo AS photo,
                             s.name AS specie,
                             b.name AS breed
