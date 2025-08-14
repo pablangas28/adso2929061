@@ -57,3 +57,64 @@
             echo 'Error: ' . $e->getMessage();
         }
     }
+
+    //list species
+    function listSpecies ($conx) {
+        try {
+           $sql = "SELECT *
+                    FROM species ";
+            $stmt = $conx->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
+    //list sexes
+    function listSexes ($conx) {
+        try {
+           $sql = "SELECT *
+                    FROM sexes ";
+            $stmt = $conx->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
+    //list breeds
+    function listBreeds ($conx) {
+        try {
+           $sql = "SELECT *
+                    FROM breeds ";
+            $stmt = $conx->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
+    //add pet
+
+    function addPet($name, $specie_id, $breed_id, $sex_id, $photo, $conx) {
+        try {
+            $sql = "INSERT INTO pets (name, specie_id, breed_id, sex_id, photo)
+                    VALUES (:name, :specie_id, :breed_id, :sex_id, :photo)";
+            $stmt = $conx->prepare($sql);
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':specie_id', $specie_id);
+            $stmt->bindParam(':breed_id', $breed_id);
+            $stmt->bindParam(':sex_id', $sex_id);
+            $stmt->bindParam(':photo', $photo);
+            if($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
