@@ -411,3 +411,6 @@ main img#preview {
     object-fit: cover;
     width: 150px;
 }
+body {
+    background-color: cadetblue;
+}
