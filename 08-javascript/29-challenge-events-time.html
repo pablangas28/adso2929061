@@ -1,25 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>29-challenge-events-time</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        section.intro-screen .intro-container {
+            position: relative;
+            /* display: inline-block; */
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        section.intro-screen .intro-container img {
+            width: 100%;
+            display: block;
+            border-radius: 1rem;
+        }
+
+        .select {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            margin-top: 1rem;
+            transform: translateX(-50%);
+        }
+
+        .select .btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+        }
+
+        .select .btn img {
+            width: 100%;
+            height: auto;
+        }
+
+        .cars {
+            width: 120px;
+            
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .cars img {
+            position: absolute;
+            opacity: 0;
+            transform: scale(0.7);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .cars img.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+
 </head>
-    <body class="js">
-            <nav>
-                <a href="index.html">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>            </nav>
-                </a>
-        <main>
-            <header>
-                <h1>29-challenge-events-time</h1>
-                <h2>Create time-based interactive challenges. </h2>
-            </header>
-            <section>
-                
-            </section>
-        </main>
-    </body>
+
+<body class="js">
+    <nav>
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path fill="#ffffff"
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
+    </nav>
+    </a>
+    <main>
+        <header>
+            <h1>29-challenge-events-time</h1>
+            <h2>Create time-based interactive challenges. </h2>
+        </header>
+        <section class="into-screen">
+            <div class="intro-container">
+                <img src="images/challengue/fondo-inicio.png" alt="Intro" class="intro-image">
+
+                <div class="select">
+                    <button class="btn left">
+                        <img src="images/challengue/btn-izquierda.png" alt="izquierda">
+                    </button>
+                    
+                    <div class="cars">
+                        <img src="images/challengue/bmw-blanco.png" alt="BMW Blanco" class="active">
+                        <img src="images/challengue/bmw-azul.png" alt="BMW Azul">
+                        <img src="images/challengue/bmw-negro.png" alt="BMW Negro">
+                    </div>
+                    
+                    <button class="btn right">
+                        <img src="images/challengue/btn-derecha.png" alt="derecha">
+                    </button>
+                </div>
+
+                <button class="start"></button>
+                <div class="contexto">
+                    <img src="images/challengue/div 2.png" alt="how-toplay" class="context">
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        const cars = document.querySelectorAll(".cars img");
+        const btnLeft = document.querySelector(".btn.left");
+        const btnRight = document.querySelector(".btn.right");
+
+        let index = 0;
+
+        function showCar(i) {
+            cars.forEach(car => car.classList.remove("active"));
+            cars[i].classList.add("active");
+        }
+
+        btnLeft.addEventListener("click", () => {
+            index = (index - 1 + cars.length) % cars.length; // retrocede
+            showCar(index);
+        });
+
+        btnRight.addEventListener("click", () => {
+            index = (index + 1) % cars.length; // avanza
+            showCar(index);
+        });
+
+        // inicial
+        showCar(index);
+    </script>
+</body>
+
 </html>
