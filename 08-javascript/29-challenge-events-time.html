@@ -5,18 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>29-challenge-events-time</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/styles.css">
     <style>
+        body {
+            background: #111;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        section.intro-screen,
+        section.game-hide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        section.intro-screen.hidden,
+        section.game-hide.hidden {
+            display: none;
+        }
+
         section.intro-screen .intro-container {
             position: relative;
-            /* display: inline-block; */
             width: 100%;
             max-width: 400px;
             margin: 0 auto;
+            overflow: hidden;
+            border-radius: 1rem;
         }
 
-        section.intro-screen .intro-container img {
+        section.intro-screen .intro-container img.intro-image {
             width: 100%;
             display: block;
             border-radius: 1rem;
@@ -28,9 +47,8 @@
             justify-content: center;
             gap: 1rem;
             position: absolute;
-            bottom: 30px;
+            bottom: 41%;
             left: 50%;
-            margin-top: 1rem;
             transform: translateX(-50%);
         }
 
@@ -39,8 +57,8 @@
             border: none;
             cursor: pointer;
             padding: 0;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
         }
 
         .select .btn img {
@@ -49,8 +67,7 @@
         }
 
         .cars {
-            width: 120px;
-            
+            width: 121px;
             height: 200px;
             overflow: hidden;
             display: flex;
@@ -64,85 +81,321 @@
             opacity: 0;
             transform: scale(0.7);
             transition: opacity 0.4s ease, transform 0.4s ease;
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 80%;
+            max-height: 80%;
         }
 
         .cars img.active {
             opacity: 1;
             transform: scale(1);
         }
-    </style>
 
+        button.start {
+            background: url(images/challengue/start.png);
+            border: none;
+            cursor: pointer;
+            width: 60px;
+            height: 68px;
+            position: absolute;
+            bottom: 34%;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        button.start:hover {
+            transform: translateX(-50%) scale(1.1);
+            filter: brightness(2);
+        }
+
+        .contexto {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+        }
+
+        .contexto img {
+            width: 100%;
+            display: block;
+        }
+
+        section.game-hide .game-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            height: 600px;
+            overflow: hidden;
+            border-radius: 1rem;
+            background: #000;
+        }
+
+        section.game-hide .game-container img.sprite {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            animation: animParallax 2.8s linear infinite;
+        }
+
+        @keyframes animParallax {
+            from {
+                top: -70%;
+            }
+
+            to {
+                top: 0;
+            }
+        }
+
+        .player {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 130px;
+        }
+
+        .obstacle,
+        .gasolina {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            top: -200px;
+        }
+
+        .gasolina {
+            width: 50px;
+            height: 70px;
+        }
+
+        .fuel-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .fuel-container img {
+            width: 40px;
+            margin-bottom: 5px;
+            position: relative;
+            transform: translateY(89%);
+        }
+
+        progress.fuel {
+            width: 30px;
+            height: 120px;
+            writing-mode: vertical-lr;
+            transform: rotate(180deg);
+        }
+    </style>
 </head>
 
 <body class="js">
     <nav>
         <a href="index.html">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                <path fill="#ffffff"
-                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path fill="#ffffff" d="M9.4 233.4c-12.5..." />
             </svg>
+        </a>
     </nav>
-    </a>
+
     <main>
         <header>
             <h1>29-challenge-events-time</h1>
-            <h2>Create time-based interactive challenges. </h2>
+            <h2>Create time-based interactive challenges.</h2>
         </header>
-        <section class="into-screen">
+        <section class="intro-screen">
             <div class="intro-container">
-                <img src="images/challengue/fondo-inicio.png" alt="Intro" class="intro-image">
-
+                <img src="images/challengue/fondo-inicio.png" class="intro-image">
                 <div class="select">
-                    <button class="btn left">
-                        <img src="images/challengue/btn-izquierda.png" alt="izquierda">
-                    </button>
-                    
+                    <button class="btn left"><img src="images/challengue/btn-izquierda.png"></button>
                     <div class="cars">
-                        <img src="images/challengue/bmw-blanco.png" alt="BMW Blanco" class="active">
-                        <img src="images/challengue/bmw-azul.png" alt="BMW Azul">
-                        <img src="images/challengue/bmw-negro.png" alt="BMW Negro">
+                        <img src="images/challengue/bmw-blanco.png" class="active">
+                        <img src="images/challengue/bmw-azul.png">
+                        <img src="images/challengue/bmw-negro.png">
                     </div>
-                    
-                    <button class="btn right">
-                        <img src="images/challengue/btn-derecha.png" alt="derecha">
-                    </button>
+                    <button class="btn right"><img src="images/challengue/btn-derecha.png"></button>
                 </div>
-
                 <button class="start"></button>
-                <div class="contexto">
-                    <img src="images/challengue/div 2.png" alt="how-toplay" class="context">
-                </div>
+                <div class="contexto"><img src="images/challengue/div 2.png" class="context"></div>
             </div>
         </section>
+
+        <section class="game-hide hidden">
+            <div class="game-container">
+                <img src="images/challengue/carretera.png" class="sprite">
+                <div class="fuel-container">
+                    <img src="images/challengue/barra-gasolina.png">
+                    <progress class="fuel" max="100" value="50"></progress>
+                </div>
+                <img class="player" src="">
+            </div>
+        </section>
+        <section>
+            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450"
+                src="https://embed.figma.com/design/o8aIVq6FG4Nci2hUbqCZ16/25-challenge-arrays--Copy-?node-id=0-1&embed-host=share"
+                allowfullscreen></iframe>
+        </section>
     </main>
+
     <script>
-        const cars = document.querySelectorAll(".cars img");
-        const btnLeft = document.querySelector(".btn.left");
-        const btnRight = document.querySelector(".btn.right");
+        const cars = document.querySelectorAll(".cars img")
+        const btnLeft = document.querySelector(".btn.left")
+        const btnRight = document.querySelector(".btn.right")
+        const startBtn = document.querySelector(".start")
+        const intro = document.querySelector(".intro-screen")
+        const game = document.querySelector(".game-hide")
+        const player = document.querySelector(".player")
+        const fuelBar = document.querySelector(".fuel")
+        const gameContainer = document.querySelector(".game-container")
 
-        let index = 0;
+        let index = 0, posX = 150, obstacles = [], gasolinaItems = [], gameRunning = false
+        let lastObstacleTime = 0, lastGasolinaTime = 0, startTime = 0
+        let leftPressed = false, rightPressed = false
+        let lives = 3
 
+        // mostrar auto
         function showCar(i) {
-            cars.forEach(car => car.classList.remove("active"));
-            cars[i].classList.add("active");
+            cars.forEach(c => c.classList.remove("active"))
+            cars[i].classList.add("active")
+        }
+        btnLeft.addEventListener("click", () => { index = (index - 1 + cars.length) % cars.length; showCar(index) })
+        btnRight.addEventListener("click", () => { index = (index + 1) % cars.length; showCar(index) })
+        showCar(index)
+
+        // iniciar juego
+        startBtn.addEventListener("click", () => {
+            intro.classList.add("hidden")
+            game.classList.remove("hidden")
+            player.src = cars[index].src
+            posX = 150
+            player.style.left = posX + "px"
+            fuelBar.value = 50
+            obstacles = []
+            gasolinaItems = []
+            gameRunning = true
+            startTime = Date.now()
+            lives = 3
+            gameLoop()
+        })
+
+        // teclas presionadas
+        document.addEventListener("keydown", e => {
+            if (!gameRunning) return
+            if (e.key === "ArrowLeft") leftPressed = true
+            if (e.key === "ArrowRight") rightPressed = true
+        })
+        document.addEventListener("keyup", e => {
+            if (e.key === "ArrowLeft") leftPressed = false
+            if (e.key === "ArrowRight") rightPressed = false
+        })
+
+        // obstaculos
+        function spawnObstacle() {
+            const imgs = ["obstaculo1.png", "obstaculo2.png", "obstaculo3.png"]
+            const o = document.createElement("img")
+            o.src = "images/challengue/" + imgs[Math.floor(Math.random() * imgs.length)]
+            o.classList.add("obstacle")
+            o.style.left = (Math.floor(Math.random() * 3) * 100 + 50) + "px"
+            o.style.top = "-200px"
+            gameContainer.appendChild(o)
+            obstacles.push(o)
         }
 
-        btnLeft.addEventListener("click", () => {
-            index = (index - 1 + cars.length) % cars.length; // retrocede
-            showCar(index);
-        });
+        // gasolina
+        function spawnGasolina() {
+            const g = document.createElement("img")
+            g.src = "images/challengue/gasolina.png"
+            g.classList.add("gasolina")
+            g.style.left = (Math.floor(Math.random() * 3) * 100 + 70) + "px"
+            g.style.top = "-200px"
+            gameContainer.appendChild(g)
+            gasolinaItems.push(g)
+        }
 
-        btnRight.addEventListener("click", () => {
-            index = (index + 1) % cars.length; // avanza
-            showCar(index);
-        });
+        // bucle principal
+        function gameLoop() {
+            if (!gameRunning) return
 
-        // inicial
-        showCar(index);
+            // movimiento suave
+            if (leftPressed) posX = Math.max(20, posX - 3)
+            if (rightPressed) posX = Math.min(300, posX + 3)
+            player.style.left = posX + "px"
+
+            const now = Date.now()
+            const elapsed = (now - startTime) / 1000
+
+            // dificultad progresiva
+            let obstacleInterval = Math.max(500, 2000 - elapsed * 50)
+            let gasolinaInterval = 6000
+
+            if (now - lastObstacleTime > obstacleInterval) {
+                spawnObstacle()
+                lastObstacleTime = now
+            }
+            if (now - lastGasolinaTime > gasolinaInterval) {
+                spawnGasolina()
+                lastGasolinaTime = now
+            }
+
+            obstacles.forEach((o, i) => {
+                o.style.top = (parseInt(o.style.top) + 5) + "px"
+                if (checkCollision(player, o)) {
+                    o.remove()
+                    obstacles.splice(i, 1)
+                    lives--
+                    if (lives <= 0) {
+                        endGame("Game Over")
+                    }
+                }
+                if (parseInt(o.style.top) > 650) { o.remove(); obstacles.splice(i, 1) }
+            })
+
+            gasolinaItems.forEach((g, i) => {
+                g.style.top = (parseInt(g.style.top) + 5) + "px"
+                if (checkCollision(player, g)) {
+                    fuelBar.value = Math.min(100, parseInt(fuelBar.value) + 20)
+                    g.remove(); gasolinaItems.splice(i, 1)
+                }
+                if (parseInt(g.style.top) > 650) { g.remove(); gasolinaItems.splice(i, 1) }
+            })
+
+            fuelBar.value -= 0.1
+            if (fuelBar.value <= 0) endGame("Sin gasolina, game over!")
+
+            requestAnimationFrame(gameLoop)
+        }
+
+        // colision
+        function checkCollision(a, b) {
+            const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect()
+            return !(ra.top > rb.bottom || ra.bottom < rb.top || ra.left > rb.right || ra.right < rb.left)
+        }
+
+        // terminar juego
+        function endGame(msg) {
+            gameRunning = false
+            setTimeout(() => {
+                alert(msg)
+                obstacles.forEach(o => o.remove())
+                gasolinaItems.forEach(g => g.remove())
+                obstacles = []; gasolinaItems = []
+                game.classList.add("hidden")
+                intro.classList.remove("hidden")
+            }, 100)
+        }
     </script>
+
+
+
+
 </body>
 
 </html>
