@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>29-challenge-events-time</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="../css/styles.css">
-        <style>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
         body {
             background: #111;
             margin: 0;
@@ -193,19 +194,37 @@
             writing-mode: vertical-lr;
             transform: rotate(180deg);
         }
+
+        #vidas {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px black;
+        }
     </style>
 </head>
-    <body class="js">
-            <nav>
-                <a href="index.html">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>            </nav>
-                </a>
-        <main>
-            <header>
-                <h1>29-challenge-events-time</h1>
-                <h2>Create time-based interactive challenges. </h2>
-            </header>
-            <section class="intro-screen">
+
+<body class="js">
+    <nav>
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path fill="#ffffff"
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
+    </nav>
+    </a>
+    <main>
+        <header>
+            <h1>29-challenge-events-time</h1>
+            <h2>Create time-based interactive challenges. </h2>
+        </header>
+        <section class="intro-screen">
             <div class="intro-container">
                 <img src="images/challengue/fondo-inicio.png" class="intro-image">
                 <div class="select">
@@ -224,6 +243,7 @@
         <section class="game-hide hidden">
             <div class="game-container">
                 <img src="images/challengue/carretera.png" class="sprite">
+                <div id="vidas"></div>
                 <div class="fuel-container">
                     <img src="images/challengue/barra-gasolina.png">
                     <progress class="fuel" max="100" value="50"></progress>
@@ -236,8 +256,8 @@
                 src="https://embed.figma.com/design/o8aIVq6FG4Nci2hUbqCZ16/25-challenge-arrays--Copy-?node-id=0-1&embed-host=share"
                 allowfullscreen></iframe>
         </section>
-        </main>
-        <script>
+    </main>
+    <script>
         const cars = document.querySelectorAll(".cars img")
         const btnLeft = document.querySelector(".btn.left")
         const btnRight = document.querySelector(".btn.right")
@@ -253,6 +273,18 @@
         let leftPressed = false, rightPressed = false
         let lives = 3
 
+        // mostrar vidas
+        function renderLives() {
+            const contenedor = document.getElementById("vidas");
+            contenedor.innerHTML = "❤️".repeat(lives);
+        }
+        function loseLife() {
+            if (lives > 0) {
+                lives--;
+                renderLives();
+            }
+        }
+        renderLives();
         // mostrar auto
         function showCar(i) {
             cars.forEach(c => c.classList.remove("active"))
@@ -306,7 +338,7 @@
             const g = document.createElement("img")
             g.src = "images/challengue/gasolina.png"
             g.classList.add("gasolina")
-            g.style.left = (Math.floor(Math.random() * 3) * 100 + 70) + "px"
+            g.style.left = (Math.floor(Math.random() * 3) * 100 + 80) + "px"
             g.style.top = "-200px"
             gameContainer.appendChild(g)
             gasolinaItems.push(g)
@@ -342,7 +374,7 @@
                 if (checkCollision(player, o)) {
                     o.remove()
                     obstacles.splice(i, 1)
-                    lives--
+                    loseLife()
                     if (lives <= 0) {
                         endGame("Has chocado, Game Over")
                     }
@@ -383,6 +415,21 @@
                 intro.classList.remove("hidden")
             }, 100)
         }
+        startBtn.addEventListener("click", () => {
+            intro.classList.add("hidden")
+            game.classList.remove("hidden")
+            player.src = cars[index].src
+            posX = 150
+            player.style.left = posX + "px"
+            fuelBar.value = 100
+            obstacles = []
+            gasolinaItems = []
+            gameRunning = true
+            startTime = Date.now()
+            lives = 3
+            renderLives()
+        })
     </script>
-    </body>
+</body>
+
 </html>
