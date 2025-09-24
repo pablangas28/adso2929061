@@ -138,6 +138,72 @@
             </div>
         </section>
     </main>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            currentActive()
+            // First
+            $('.btnFirst').click(function () {
+                removeActive()
+                $('figure').first().addClass('active')
+                currentActive()
+            })
+            // Last
+            $('.btnLast').click(function () {
+                removeActive()
+                $('figure').last().addClass('active')
+                currentActive()
+            })
+            // Next
+            $('.btnNext').click(function () {
+                removeActive()
+                if ($($act).index() < 4) {
+                    $($act).next().addClass('active')
+                } else {
+                    $('figure').first().addClass('active')
+                }
+                currentActive()
+            })
+            // Prev
+            $('.btnPrev').click(function () {
+                removeActive()
+                if ($($act).index() > 0) {
+                    $($act).prev().addClass('active')
+                } else {
+                    $('figure').last().addClass('active')
+                }
+                currentActive()
+            })
+            // AutoPlay
+            $('.btnAutoPlay').click(function () {
+                $(this).toggleClass('autoplay')
+                if ($(this).hasClass('autoplay')) {
+                    $(this).text('Stop')
+                    $autoInt = setInterval(function () {
+                        if ($($act).index() < $('figure').length) {
+                            removeActive()
+                            if ($($act).index() < 4) {
+                                $($act).next().addClass('active')
+                            } else {
+                                $('figure').first().addClass('active')
+                            }
+                            currentActive()
+                        }
+                    }, 1000)
+                } else {
+                    $(this).text('Auto Play')
+                    clearInterval($autoInt)
+                }
+            })
+        })
+        // Functions
+        function currentActive() {
+            $act = $('figure.active')
+        }
+        function removeActive() {
+            $('figure').removeClass('active')
+        }
+    </script>
 </body>
 
 </html>

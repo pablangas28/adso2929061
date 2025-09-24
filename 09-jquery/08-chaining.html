@@ -65,6 +65,26 @@
             </article>
         </section>
     </main>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.btn').click(function (e) {
+                $(this).css({
+                    'opacity': '0.5',
+                    'pointer-events': 'none'
+                })
+                $('.goku').animate({ 'left': '200px' }, 2000)
+                    .animate({ 'top': '180px' }, 2000)
+                    .animate({ 'left': '10px' }, 2000)
+                    .animate({ 'top': '10px' }, 2000, function () {
+                        $('.btn').css({
+                            'opacity': '1',
+                            'pointer-events': 'all'
+                        })
+                    })
+            })
+        })
+    </script>
 </body>
 
 </html>

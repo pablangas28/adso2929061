@@ -65,6 +65,28 @@
             </figure>
         </section>
     </main>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        
+        $(document).ready(function () {
+            $('.btn').click(function (e) {
+                $(this).css({
+                    'opacity': '0.5',
+                    'pointer-events': 'none'
+                })
+                $('figcaption').text('Animation Started')
+                $('.character').animate({ 'left': '160px' }, 2000, function () {
+                    $('.character').animate({ 'left': '-60px' }, 2000, function () {
+                        $('figcaption').text('Animation Finished')
+                        $('.btn').css({
+                            'opacity': '1',
+                            'pointer-events': 'all'
+                        })
+                    })
+                })
+            })
+        })
+    </script>
 </body>
 
 </html>

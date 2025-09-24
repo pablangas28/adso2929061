@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
         <link rel="stylesheet" href="../css/styles.css">
         <style>
-    .ready {
+    body main section.ready {
         background-color: #7398b8;
         border-radius: 0.2rem;
         color: #344554;
@@ -30,5 +30,25 @@
                 <p class="ready"></p>
             </section>
         </main>
+        <script src="js/jquery-3.7.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                
+            })
+        </script>
+        <script>
+        // Large way
+        $(document).ready(function() {
+            $('.ready').text('DOM Loaded 💛')
+        })
+        // ShortHand
+        $(function() {
+            alert('DOM Loaded 💛')
+        })
+        // Ultra ShortHand
+        $(() => {
+            console.log('DOM Loaded 💛')
+        })
+        </script>
     </body>
 </html>
