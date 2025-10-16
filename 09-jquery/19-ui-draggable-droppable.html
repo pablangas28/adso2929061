@@ -92,8 +92,32 @@
     <script src="js/jquery-3.7.1.min.js"></script>
         <script>
             $(document).ready(function() {
-                
-            })
+            $('div.drag').draggable({
+				containment: '.landscape',
+				cursor: 'move',
+				snap: '.pk',
+				snapMode: 'inner',
+				revert: 'invalid'
+			});
+			$('div.bulbassaur').droppable({
+				accept: '.drag',
+				drop: function(evt, ui) {
+					$drag = $(ui.draggable);
+					$drop = $(this);
+					$drop.fadeOut(1000);
+					$drag.addClass('animate__animated animate__bounce animate__infinite	')
+				}
+			});
+			$('div.venussaur').droppable({
+				accept: '.superball',
+				drop: function(evt, ui) {
+					$drag = $(ui.draggable);
+					$drop = $(this);
+					$drop.fadeOut(1000);
+					$drag.addClass('animate__animated animate__bounce animate__infinite	')
+				}
+			});
+        });
         </script>
 </body>
 
