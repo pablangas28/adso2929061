@@ -1,0 +1,68 @@
+-- show Version MySQL
+> mysql --version
+
+-- Acces to MySQL Server
+>mysql -u root -p
+
+-- Show All Databases
+
+>> show databases;
+
+-- Create Databases
+>> create database databasename;
+
+-- Use Databases
+>> use databasename;
+
+-- Conect Databases
+>> conect databasename;
+
+-- Create Tables
+
+>> create table gyms(
+    id INT AUTO_INCREMENT,
+    name VARCHAR(32) not null,
+    create_at timestamp,
+    PRIMARY KEY (id)
+);
+-- Describe Table
+>> describe gyms;
+
+>> create table trainers(
+    id INT AUTO_INCREMENT,
+    name VARCHAR(32) NOT NULL UNIQUE,
+    level INT NOT NULL,
+    gym_id INT NOT NULL,
+    create_at timestamp,
+    PRIMARY KEY (id),
+    FOREIGN KEY (gym_id) REFERENCES gyms (id)
+);
+
+>> create table pokemons(
+    id INT AUTO_INCREMENT,
+    name VARCHAR(32) UNIQUE,
+    type VARCHAR(32) NOT NULL,
+    strenght INT NOT NULL,
+    stamina INT NOT NULL,
+    speed INT NOT NULL,
+    accuracy INT NOT NULL,
+    trainer_id INT NOT NULL,
+    created_at timestamp,
+    PRIMARY KEY (id),
+    FOREIGN KEY (trainer_id) REFERENCES trainers (id)
+);
+
+-- Show Tables
+>> show tables;
+
+--Dump Data (BackUp Database)
+>> mysqldump -u root pokeadso > C:\users\usuario\desktop\adso2929061\15-sql\backup.sql
+
+-- Drop Databases
+>> drop database databasename;
+
+-- Recovery Database
+>> create database pokeadso;
+>> exit
+
+>mysql -u root pokeadso < backup.sql
