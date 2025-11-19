@@ -22,8 +22,8 @@
     
      <main>
         <header>
-            <h1>15-sql</h1>
-            <h2>TypeScript es un superset tipado de JavaScript que se compila a JavaScript puro.</h2>
+            <h1>17-OOP</h1>
+            <h2>Programacion Orientada A Objetos.</h2>
             <img src="images/logo-oop.png" alt="sql">
         </header>
         <menu>
