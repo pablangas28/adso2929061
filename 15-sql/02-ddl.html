@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>01-basics</title>
+    <title>02-ddl</title>
     <link rel="shortcut icon" href="favicon.ico.png" type="image/x-icon">
         <link rel="stylesheet" href="../css/styles.css">
-         <style>
+        <style>
         main section {
             color: #fff;
         }
@@ -35,42 +35,44 @@
                 </a>
         <main>
             <header>
-                <h1>01-basics</h1>
-                <h2> </h2>
+                <h1>02-ddl</h1>
+                <h2>Data Definition Lenguage </h2>
             </header>
             <section>
-                
-            <h3>Show Version SQL</h3>
-            <pre> >mysql --version</pre>
-
-
-            <h3>Acces to MySQL</h3>
-            <pre> >mysql -u root -p</pre>
-
-            <h3>Show All Databases</h3>
-            <pre> >>SHOW DATABASES; </pre>
-
-            <h3>Create Database</h3>
-            <pre> >>CREATE DATABASE database_name; </pre>
-
-            <h3>Use Database</h3>
-            <pre> >>USE database_name;</pre>
-
-            <h3>Connect Database</h3>
-            <pre> >> connect database_name;</pre>
-
-            <h3>Create Table</h3>
-            <pre> >>CREATE TABLE gynms(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(32) NOT NULL ,
-    created_at TIMESTAMP
-);</pre>
-
-            <h3>Create Copy</h3>
-            <pre> >mysqldump -u root database_name > path/name_file.sql</pre>
-
-            <h3>Use Copy</h3>
-            <pre> >mysql -u root -p database_name <pre path/name_file.sql </pre>
+                <h3>CREATE TABLE pokemons</h3>
+            <pre>
+CREATE TABLE pokemons (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name varchar(32) NOT NULL UNIQUE,
+  tipo varchar(32) NOT NULL,
+  strenght int(11) NOT NULL,
+  stamina int(11) NOT NULL,
+  speed int(11) NOT NULL,
+  accuracy int(11) NOT NULL,
+  trainer_id int(11) NOT NULL,
+  created_at timestamp NOT NULL,
+   FOREIGN KEY trainer_id REFERENCE trainers(id)
+);              
+            </pre>
+            <h3>SHOW CONSTRAINT FK</h3>
+            <pre> SHOW CREATE TABLE pokemons; </pre>
+            <h3>ALTER TABLE ADD FK</h3>
+            <pre>ALTER TABLE pokemons  ADD FOREIGN KEY(trainer_id);
+            </pre>
+            <h3>ALTER TABLE RENAME:</h3>
+            <pre>ALTER TABLE pokemons RENAME digimons;</pre>
+            <h3>ALTER TABLE RENAME COLUMNS:</h3>
+            <pre>ALTER TABLE pokemons RENAME COLUMN stamina </pre>
+            <h3>ALTER TABLE ADD COLUMN:</h3>
+            <pre>ALTER TABLE pokemons  ADD COLUMN color VARCHAR(10);
+            </pre>
+            <h3>DROP TABLE</h3>
+            <pre>DROP TABLE pokemons</pre>
+            <h3>ALTER TABLE DROP COLUMN:</h3>
+            <pre>ALTER TABLE pokemons  DROP COLUMN color;
+            </pre>
+            <h3>ALTER TABLE ADD COLUMNS AFTER COLUMNS:</h3>
+            <pre>ALTER TABLE pokemons ADD COLUMN color INT NOT NULL AFTER COLUMN speed;</pre>
             </section>
         </main>
     </body>
