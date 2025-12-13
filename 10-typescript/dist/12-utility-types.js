@@ -1,7 +1,10 @@
 "use strict";
+const update = { health: 80 };
 const output12 = document.getElementById('output12');
 if (output12) {
     output12.innerHTML = `
-        <li><b>Characters: </b> ${null}</li>
+        <li><strong>Updated Property: </strong> health</li>
+        <li><strong>New value: </strong> ${update.health}</li>
+
     `;
 }
