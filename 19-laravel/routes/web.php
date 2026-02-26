@@ -51,3 +51,7 @@ Route::get('challengue/user/time', function(){
 
     return $html;
 });
+Route::get('view/allpets', function(){
+    $pets = App\Models\Pet::all();
+    return view('allpets')->with('pets', $pets);
+});
