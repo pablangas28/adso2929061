@@ -24,17 +24,21 @@
                 </tr>
             </thead>
             <tbody>
-               @foreach ($pets as $pet )
+                @foreach ($pets as $pet )
                 <tr>
                     <th>{{ $pet->id }}</th>
                     <td>{{ $pet->name }}</td>
                     <td>{{ $pet->kind }}</td>
                     <td>{{ $pet->breed }}</td>
                     <td>
-                        
+                        <a href="{{ url('view/pet/' . $pet->id) }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-emerald-700 hover:text-emerald-400 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 0 5 11a6 6 0 0 0 12 0z" />
+                            </svg>
+                        </a>
                     </td>
                 </tr>
-               @endforeach
+                @endforeach
             </tbody>
         </table>
     </div>
