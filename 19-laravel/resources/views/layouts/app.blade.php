@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <title>@yield('title')</title>
 </head>
-<body class="bg-[linear-gradient(to_top,#000c,#0000),url('images/bg-welcome.png')] min-h-dvh bg-no-repeat bg-center bg-cover">
+<body class="bg-[linear-gradient(to_top,#000c,#0000),url({{asset('images/bg-welcome.png')}})] min-h-dvh bg-no-repeat bg-center bg-cover pt-14 bg-fixed">
     <main class="p-12 flex flex-col gap-2 justify-center items-center min-h-dvh">
         @yield('content')
     </main>

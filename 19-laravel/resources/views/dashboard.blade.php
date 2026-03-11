@@ -3,6 +3,7 @@
 @section('title', 'Larapets: Dashboard')
 
 @section('content')
+    @include('partial.navbar')
     <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
