@@ -4,15 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    {{-- <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" /> --}}
+    <link rel="stylesheet" href="{{ asset('css/daisyui5.css') }}">
     <title>@yield('title')</title>
 </head>
-<body class="bg-[linear-gradient(to_top,#000c,#0000),url({{asset('images/bg-welcome.png')}})] min-h-dvh bg-no-repeat bg-center bg-cover pt-14 bg-fixed">
+@auth
+    @php
+        (Auth::user()->role == 'Admin') ? $colors = '#009a,#000e' : $colors = '#111a,#111a'@endphp
+@else
+    @php
+        $colors = '#000c,#0000' @endphp
+    
+@endauth
+
+<body class="bg-[linear-gradient(to_top,{{$colors}}),url({{asset('images/bg-welcome.png')}})] min-h-dvh bg-no-repeat bg-center bg-cover pt-14 bg-fixed">
     <main class="p-12 flex flex-col gap-2 justify-center items-center min-h-dvh">
         @yield('content')
     </main>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> --}}
+<script src="{{asset('js/tailwindcss4.js') }}" > </script>
 {{-- <body class="bg-[url('images/bg-welcome.png')] 
             bg-gradient
             bg-cover 
