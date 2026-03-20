@@ -47,7 +47,7 @@ class UserFactory extends Factory
             'gender' => $gender,
             'birthdate' => $birthdate,
             'phone' => fake()->numerify('320######'),
-            'photo' => "images/{$document}.png",
+            'photo' => "{$document}.png",
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => bcrypt('12345'),
