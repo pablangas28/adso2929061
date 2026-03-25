@@ -21,18 +21,22 @@
     <main class="p-12 flex flex-col gap-2 justify-center items-center min-h-dvh">
         @yield('content')
     </main>
-</body>
-{{-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> --}}
-<script src="{{asset('js/tailwindcss4.js') }}" > </script>
-{{-- <body class="bg-[url('images/bg-welcome.png')] 
-            bg-gradient
-            bg-cover 
-            min-h-dvh"
->
+    <script src="{{asset('js/tailwindcss4.js') }}" > </script>
+    <script src="{{asset('js/jquery-3.7.1.min.js')}}"></script>
+    <script src="{{asset('js/sweetalert2@11.js')}}"></script>
+    @yield('js')
+    
+    {{-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> --}}
+    {{-- <body class="bg-[url('images/bg-welcome.png')] 
+    bg-gradient
+    bg-cover 
+    min-h-dvh"
+    >
     <main>
         <h1>@yield('title')</h1>
         @yield('content')
     </main>
     
 </body> --}}
+</body>
 </html>
