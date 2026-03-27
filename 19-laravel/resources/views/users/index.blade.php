@@ -82,7 +82,7 @@
                 </tr>
 
             </thead>
-            <tbody>
+            <tbody class="datalist">
                 @foreach ($users as $user)
                     <tr class="even:bg-black/60">
                         <td>{{ $user->id }}</td>
@@ -146,6 +146,13 @@
 @endsection
 @section('js')
     <script>
+        //IMPORT FILE
+        $('.btn-import').click(function(e){
+            $('#file').click()
+        })
+        $('#file').change(function(e){
+            $(this).parent().submit()
+        })
         // MESSAGES
         @if (session('message'))
             Swal.fire({
@@ -173,5 +180,44 @@
                 }
             });
         });
+// Search - - - - - - - - - - - - - - - -
+            function debounce(func, wait) {
+                let timeout
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout)
+                        func(...args)
+                    };
+                    clearTimeout(timeout)
+                    timeout = setTimeout(later, wait)
+                }
+            }
+            const search = debounce(function(query) {
+                
+                $token = $('input[name=_token]').val()
+                
+                $.post("search/users", {'q': query, '_token': $token},
+                    function (data) {
+                        $('.datalist').html(data).hide().fadeIn(1000)
+                    }
+                )
+            }, 500)
+            $('body').on('input', '#qsearch', function(event) {
+                event.preventDefault()
+                const query = $(this).val()
+                
+                $('.datalist').html(`<tr>
+                                        <td colspan="7" class="text-center py-18">
+                                            <span class="loading loading-spinner loading-xl"></span>
+                                        </td>
+                                    </tr>`)
+                if(query != '') {
+                    search(query)
+                } else {
+                    setTimeout(() => {
+                        window.location.replace('users')
+                    }, 500)
+                }
+            })
     </script>
 @endsection

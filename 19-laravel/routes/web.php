@@ -73,6 +73,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+//MIDLEWARE AUTH
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -85,6 +86,14 @@ Route::middleware('auth')->group(function() {
         // 'pets' => PetController::class,
         // 'adoptions' => AdoptionController::class,
     ]);
+    Route::get('export/users/pdf', [UserController::class, 'pdf'] );
+
+    Route::get('export/users/excel', [UserController::class, 'excel'] );
+
+    Route::post('import/users', [UserController::class, 'import'] );
+
+    Route::post('search/users', [UserController::class, 'search'] );
+    
 });
 
 require __DIR__.'/auth.php';
