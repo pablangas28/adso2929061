@@ -4,9 +4,9 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PetController;
+use App\Http\Controllers\AdoptionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Carbon;
-use App\Models\Adoption;
 
 Route::get('/', function () {
     return view('welcome');
@@ -71,31 +71,52 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// MIDDLEWARE AUTH
+// MIDDLEWARE AUTH - Profile (todos los auth)
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth')->group(function() {
+// -------------------------------------------------------
+// RUTAS SOLO ADMIN (users + pets CRUD y exports/imports)
+// -------------------------------------------------------
+Route::middleware(['auth', 'admin'])->group(function () {
+
+    // Resources CRUD
     Route::resources([
         'users' => UserController::class,
         'pets'  => PetController::class,
-        // 'adoptions' => AdoptionController::class,
     ]);
 
-    // Users
+    // Users exports / import / search
     Route::get('export/users/pdf',   [UserController::class, 'pdf']);
     Route::get('export/users/excel', [UserController::class, 'excel']);
     Route::post('import/users',      [UserController::class, 'import']);
     Route::post('search/users',      [UserController::class, 'search']);
 
-    // Pets
+    // Pets exports / import / search
     Route::get('export/pets/pdf',    [PetController::class, 'pdf']);
     Route::get('export/pets/excel',  [PetController::class, 'excel']);
     Route::post('import/pets',       [PetController::class, 'import']);
     Route::post('search/pets',       [PetController::class, 'search']);
+});
+
+// -------------------------------------------------------
+// RUTAS ADOPTIONS (auth, visible para Admin y Customer)
+// -------------------------------------------------------
+Route::middleware('auth')->group(function () {
+    Route::get('adoptions',        [AdoptionController::class, 'index'])->name('adoptions.index');
+    Route::get('adoptions/{adoption}', [AdoptionController::class, 'show'])->name('adoptions.show');
+
+    // Solo admin puede exportar
+    Route::middleware('admin')->group(function () {
+        Route::get('export/adoptions/pdf',   [AdoptionController::class, 'pdf']);
+        Route::get('export/adoptions/excel', [AdoptionController::class, 'excel']);
+    });
+
+    // Search disponible para todos los auth
+    Route::post('search/adoptions', [AdoptionController::class, 'search']);
 });
 
 require __DIR__.'/auth.php';

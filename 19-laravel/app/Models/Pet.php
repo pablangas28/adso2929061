@@ -8,27 +8,31 @@ use Illuminate\Database\Eloquent\Model;
 class Pet extends Model
 {
     use HasFactory;
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+
     protected $fillable = [
         'name',
-        'image',
         'kind',
         'weight',
         'age',
         'breed',
         'location',
         'description',
-        'active',
-        'status'
+        'photo',
     ];
 
-    //Relationship
-    //User has many Adoptions
-    public function adoption(){
-        return $this->hasOne(Adoption::class);
+    // Relationship - Pet has many Adoptions
+    public function adoptions()
+    {
+        return $this->hasMany(Adoption::class);
+    }
+
+    public function scopeNames($pets, $q)
+    {
+        if (trim($q)) {
+            $pets->where('name', 'LIKE', "%$q%")
+                 ->orWhere('kind',     'LIKE', "%$q%")
+                 ->orWhere('breed',    'LIKE', "%$q%")
+                 ->orWhere('location', 'LIKE', "%$q%");
+        }
     }
 }

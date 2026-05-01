@@ -16,14 +16,32 @@ class Adoption extends Model
         'pet_id',
     ];
 
-    //Relationship
-    //User has many Adoptions
-    public function user(){
+    // Relationship - Adoption belongs to User
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
-    //Relationship
-    //User has many Adoptions
-    public function pet(){
+
+    // Relationship - Adoption belongs to Pet
+    public function pet()
+    {
         return $this->belongsTo(Pet::class);
+    }
+
+    // Scope Names
+    public function scopeNames($adoptions, $q)
+    {
+        if (trim($q)) {
+            $adoptions->where(function($adoptions) use ($q) {
+                $adoptions->whereHas('user', function($subquery) use ($q) {
+                    $subquery->where('fullname', 'LIKE', "%$q%")
+                             ->orWhere('email',  'LIKE', "%$q%");
+                })
+                ->orWhereHas('pet', function($subquery) use ($q) {
+                    $subquery->where('name', 'LIKE', "%$q%")
+                             ->orWhere('kind', 'LIKE', "%$q%");
+                });
+            });
+        }
     }
 }
