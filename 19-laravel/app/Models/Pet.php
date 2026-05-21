@@ -35,4 +35,13 @@ class Pet extends Model
                  ->orWhere('location', 'LIKE', "%$q%");
         }
     }
+
+    public function scopeKinds($pets, $q) {
+        if (trim($q)) {
+            $pets->where('name', 'LIKE', "%$q%")
+                 ->Where('status', 0)
+                 ->orWhere('kind',    'LIKE', "%$q%")
+                 ->Where('status', 0);
+        }
+    }
 }
